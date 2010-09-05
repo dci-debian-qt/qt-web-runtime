@@ -1,0 +1,53 @@
+Source: qt-web-runtime
+Priority: optional
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Fathi Boudra <fabo@debian.org>
+Build-Depends: debhelper (>= 7.4.15), pkg-kde-tools (>= 0.6.4),
+ libarchive-dev, libglib2.0-dev, libqt4-dev (>= 4:4.7.0~rc1),
+ libqtwebkit-dev (>= 2.1~week35), libsqlite3-dev, libssl-dev, libx11-dev,
+ libxml2-dev, qtmobility-dev (>= 1.0.2)
+Standards-Version: 3.9.1
+Section: libs
+Homepage: http://gitorious.org/qt-web-runtime
+Vcs-Git: git://git.debian.org/pkg-kde/qt/qt-web-runtime.git
+Vcs-Browser: http://git.debian.org/?p=pkg-kde/qt/qt-web-runtime.git;a=summary
+
+Package: qt-web-runtime-dev
+Section: libdevel
+Architecture: any
+Depends: qt-web-runtime (= ${binary:Version})
+Description: Qt Web Runtime - development
+ Qt Web Runtime (Qt WRT) is a web application framework. It lets developers use
+ standard web technology to create standalone applications (web apps).
+ .
+ This package contains the Qt Web Runtime development files.
+
+Package: qt-web-runtime
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Qt Web Runtime - runtime
+ Qt Web Runtime (Qt WRT) is a web application framework. It lets developers use
+ standard web technology to create standalone applications (web apps).
+ .
+ This package contains the Qt Web Runtime binaries and libraries.
+
+Package: qt-web-runtime-examples
+Section: x11
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, qt-web-runtime (= ${binary:Version})
+Description: Qt Web Runtime examples
+ Qt Web Runtime (Qt WRT) is a web application framework. It lets developers use
+ standard web technology to create standalone applications (web apps).
+ .
+ This package contains the Qt Web Runtime examples.
+
+Package: qt-web-runtime-dbg
+Priority: extra
+Architecture: any
+Section: debug
+Depends: ${shlibs:Depends}, ${misc:Depends}, qt-web-runtime (= ${binary:Version})
+Description: Qt Web Runtime - debugging symbols
+ Qt Web Runtime (Qt WRT) is a web application framework. It lets developers use
+ standard web technology to create standalone applications (web apps).
+ .
+ This package contains the debugging symbols for the Qt Web Runtime.

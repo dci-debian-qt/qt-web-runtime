@@ -1,0 +1,16 @@
+#!/bin/sh
+# postrm script for qt-web-runtime
+
+set -e
+
+if [ -x "$(command -v servicefw)" ]; then
+	servicefw --system remove wrt.device.contacts > /dev/null || true
+	servicefw --system remove wrt.device.filesystem > /dev/null || true
+	servicefw --system remove wrt.device.fileupload > /dev/null || true
+else
+	echo "servicefw command was not found." >&2
+fi
+
+#DEBHELPER#
+
+exit 0

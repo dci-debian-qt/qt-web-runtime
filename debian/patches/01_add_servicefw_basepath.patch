@@ -1,0 +1,18 @@
+Description: add SERVICEFW_BASEPATH to allow servicefw binary base path specification
+Author: Fathi Boudra <fabo@debian.org>
+
+--- a/shared.pri
++++ b/shared.pri
+@@ -54,7 +54,11 @@ unix:!symbian {
+     CWRT_INSTALL_NPPLUGIN_DIR = $$INSTALL_PREFIX/lib/mozilla/plugins
+     CWRT_CERT_DIR = $$INSTALL_SYSCONFDIR/certs/codesigning
+     CWRT_CERTMAN_DIR = $$INSTALL_SYSCONFDIR/secure/s
+-    SERVICEFW_CMD = /usr/lib/qt4/bin/servicefw
++
++    isEmpty(SERVICEFW_BASEPATH) {
++        SERVICEFW_BASEPATH = /usr/lib/qt4/bin
++    }
++    SERVICEFW_CMD = $$SERVICEFW_BASEPATH/servicefw
+ 
+     maemo6: CWRT_INSTALL_FENNEC_PLUGIN_DIR = $$INSTALL_PREFIX/lib/fennec/plugins
+ 

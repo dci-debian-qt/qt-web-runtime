@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@ --parallel --list-missing --dbg-package=qt-web-runtime-dbg --with pkgkde_symbolshelper
+
+override_dh_auto_configure:
+	dh_auto_configure -- CONFIG+=linux SERVICEFW_BASEPATH=/usr/bin
+
+override_dh_auto_install:
+	dh_auto_install
+	# Install examples
+	mkdir -p $(CURDIR)/debia/tmp/usr/lib/wrt
+	cp -rf examples $(CURDIR)/debia/tmp/usr/lib/wrt/
+	# Fix wrong path in pkgconfig files
+	find $(CURDIR)/debian/tmp/usr/lib/pkgconfig -type f -name '*.pc' \
+		-exec perl -pi -e "s, -L$(CURDIR)/?\S+,,g" {} \;

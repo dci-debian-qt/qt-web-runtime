@@ -1,0 +1,16 @@
+#!/bin/sh
+# postinst script for qt-web-runtime
+
+set -e
+
+if [ -x "$(command -v servicefw)" ]; then
+	servicefw --system add /usr/lib/contactserviceplugin.xml > /dev/null || true
+	servicefw --system add /usr/lib/filesystemserviceplugin.xml > /dev/null || true
+	servicefw --system add /usr/lib/fileuploadserviceplugin.xml > /dev/null || true
+else
+	echo "servicefw command was not found." >&2
+fi
+
+#DEBHELPER#
+
+exit 0
